@@ -1,0 +1,59 @@
+#include<iostream>
+
+using namespace std;
+
+class shape{
+	public :
+		
+		virtual double area()  = 0;
+		virtual void show() =0;
+};
+
+const double pi = 3.14;
+class Circle:public shape{
+	private:
+		double radius;
+		
+	public:
+		Circle(double radius = 0.0){
+			this->radius = radius;
+		}
+		void show(){
+			cout<<"the circle radius is "<<radius<<endl;
+		}
+		double area() {
+			return pi*radius*radius;
+		}
+};
+
+class Rectangle: public shape{
+	private:
+		double len;
+	public :
+		Rectangle(double len =0.0){
+			this->len = len;
+		}
+		void show(){
+			cout<<"the rectangle len<:"<<len<<endl;
+		}
+		double area(){
+			return len*len;
+		}
+};
+
+int main(){
+	Circle A(10.0);
+	Rectangle B(5.0);
+	A.show();
+	cout<<"the area of shape>:"<<A.area()<<endl;
+	shape* S;
+	S = &A;
+	S->show();
+	cout<<"the area of shape>:"<<S->area()<<endl;
+	shape &p =B ;
+	p.show();
+	cout<<"the area of shape>:"<<p.area()<<endl;
+	
+	
+	return 0;
+}

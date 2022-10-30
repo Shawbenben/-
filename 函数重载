@@ -1,0 +1,70 @@
+# -
+c++学习
+#include<iostream>
+
+using namespace std;
+
+class Complex{
+	private:
+		double real;
+		double image;
+	public:
+		Complex(double real = 0.0,double image = 0.0){
+			this->real = real;
+			this->image = image;
+		}
+		void display(){
+			cout<<real<<","<<image<<endl;
+		}
+		friend Complex operator + (Complex A,Complex B){
+			return Complex(A.real+B.real,A.image+B.image);
+		}
+		
+		Complex operator - (Complex B);
+		
+};
+
+Complex Complex::operator -(Complex B){
+	return Complex(real-B.real,image-B.image);
+}
+
+class Date{
+	private:
+		int year;
+		int month;
+		int day;
+	public:
+		Date(int year = 0,int month=0,int day = 0){
+			this->year = year;
+			this->month = month;
+			this->day = day;
+		}
+		void display(){
+			cout<<year<<":"<<month<<":"<<day<<endl;
+		}
+		
+		friend ostream& operator << (ostream& cout,Date& A){
+			A.display();
+		return cout;
+		}//ostream is 运算符；
+	
+};
+
+
+
+
+int main(){
+	Complex A(100.0,20.0),B(-10.0,30.0),C;
+	A.display();
+	B.display();
+	C = A+B;
+	C.display();
+	C = C-A;
+	C.display();
+	
+	Date D(2021,10,30);
+	D.display();
+
+	cout<<D;
+	return 0;
+}

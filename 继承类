@@ -1,0 +1,59 @@
+# -
+c++学习
+nclude<iostream>
+
+using namespace std;
+
+class Point{
+	
+	private:
+		int x;
+		int y;
+	public:
+		Point(int x=0,int y=0){
+			this->x = x;
+			this->y = y;
+		}
+	void move(int offx,int offy){
+		x+=offx;
+		y+=offy;
+	}
+	void showxy(){
+		cout<<"("<<x<<","<<y<<")"<<endl;
+	}
+};
+
+const double PI =  3.14;
+class Circle: private Point{
+	private:
+		int radius;
+		
+	public:
+		Circle(double R,int x,int y):Point(x,y){
+			radius  = R;
+		
+	}
+		double 	area(){
+			return radius*radius*PI;
+		}
+		
+		void show(){
+			cout<<"radius>:"<<radius<<endl;
+		}
+		
+		void showxy(){
+			Point::showxy();
+		}
+		
+};
+
+int main(){
+	
+	Circle cir(10,2,3);
+	cir.show();
+	cout<<"the area>:"<<cir.area()<<endl;
+	//cir.showxy();
+//	cir.move(10,20);
+	cir.showxy();
+	return 0;
+}

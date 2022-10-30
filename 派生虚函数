@@ -1,0 +1,43 @@
+# -
+c++学习
+#include<iostream>
+
+using namespace std;
+
+class Vehicle{
+	public:
+		Vehicle(){
+			cout<<"Vec"<<endl;
+		}
+		~Vehicle(){
+			cout<<"Nvec"<<endl;
+		}
+		virtual void display() const{
+			cout<<"this is a vehicle"<<endl;
+		}
+	
+};
+
+class Car : public Vehicle{
+	public:
+		Car(){
+			cout<<"car"<<endl;
+		}
+		~Car(){
+			cout<<"Ncar"<<endl;
+		}
+		
+		void display() const{
+			cout<<"this is a car"<<endl;
+		}
+};
+
+int main(){
+	Vehicle *V;
+	Car car;
+	
+	V = &car;
+	V->display();
+	delete V;
+	return 0;	
+}
